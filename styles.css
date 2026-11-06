@@ -1,0 +1,160 @@
+/* ---------- Theme colours ---------- */
+:root {
+  --primary: #0b2a5b;
+  --accent: #f4b400;
+  --background: #eef3fb;
+  --text: #222222;
+  --white: #ffffff;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  --radius: 8px;
+}
+
+/* ---------- Page ---------- */
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding-top: 60px;
+  background: var(--background);
+  color: var(--text);
+}
+
+section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+  scroll-margin-top: 60px;
+}
+
+h2 {
+  color: var(--primary);
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+}
+
+/* ---------- Navigation bar ---------- */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  background: var(--primary);
+  padding: 18px 0;
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 12px;
+}
+
+nav a:hover {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+}
+
+/* ---------- Hero section ---------- */
+.hero {
+  max-width: none;
+  background: linear-gradient(135deg, var(--primary), #1a56db);
+  color: var(--white);
+  text-align: center;
+  padding: 90px 20px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  margin-bottom: 25px;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  background: var(--accent);
+  color: var(--primary);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--radius);
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+}
+
+button:hover { background: var(--white); }
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  background: var(--white);
+  border-collapse: collapse;
+  margin-top: 15px;
+  box-shadow: var(--shadow);
+}
+
+th, td {
+  border: 1px solid #ccd6e8;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  background: var(--primary);
+  color: var(--white);
+}
+
+tr:nth-child(even) td { background: #f3f6fc; }
+
+/* ---------- Form and summary ---------- */
+.booking {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+form {
+  flex: 2 1 300px;
+  background: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+input, select {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #b8c4dc;
+  border-radius: 5px;
+}
+
+aside { flex: 1 1 200px; }
+
+/* ---------- Cards ---------- */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card {
+  flex: 1 1 200px;
+  background: var(--white);
+  border-top: 5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 15px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
