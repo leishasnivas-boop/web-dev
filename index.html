@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IPL 2026 Ticket Booking</title>
+  <style>
+    /* ---------- Basic page look ---------- */
+    body   { font-family: Arial, sans-serif; margin: 0; background: #eef3fb; color: #222; }
+    section { padding: 40px 20px; max-width: 1000px; margin: auto; }
+    h2     { color: #0b2a5b; border-bottom: 3px solid #f4b400; display: inline-block; }
+
+    /* ---------- Navigation bar ---------- */
+    header { background: #0b2a5b; padding: 15px; text-align: center; }
+    nav a  { color: white; text-decoration: none; margin: 0 12px; font-weight: bold; }
+    nav a:hover { color: #f4b400; }
+
+    /* ---------- Hero banner ---------- */
+    .hero  { max-width: none; background: #1a56db; color: white; text-align: center; padding: 80px 20px; }
+    .hero h1 { font-size: 40px; }
+
+    /* ---------- Buttons ---------- */
+    button { background: #f4b400; color: #0b2a5b; border: none; padding: 10px 18px;
+             border-radius: 5px; font-weight: bold; cursor: pointer; }
+    button:hover { background: #ffd04d; }
+
+    /* ---------- Tables ---------- */
+    table  { width: 100%; background: white; border-collapse: collapse; margin-top: 15px; }
+    th, td { border: 1px solid #ccd6e8; padding: 8px; text-align: center; }
+    th     { background: #0b2a5b; color: white; }
+    tr:nth-child(even) td { background: #f3f6fc; }
+
+    /* ---------- Form and summary side by side ---------- */
+    .booking { display: flex; flex-wrap: wrap; gap: 20px; }
+    form  { background: white; padding: 20px; border-radius: 8px; flex: 2 1 300px; }
+    input, select { padding: 6px; width: 100%; max-width: 300px; }
+    aside { flex: 1 1 200px; }
+
+    /* ---------- Cards ---------- */
+    .cards { display: flex; flex-wrap: wrap; gap: 20px; }
+    .card  { background: white; border-top: 5px solid #f4b400; border-radius: 8px;
+             padding: 15px; flex: 1 1 200px; }
+
+    /* ---------- Footer ---------- */
+    footer { background: #0b2a5b; color: white; text-align: center; padding: 15px; }
+  </style>
+</head>
+<body>
+
+  <!-- 1. NAVIGATION BAR -->
+  <header>
+    <nav>
+      <a href="#matches">Matches</a> |
+      <a href="#book">Book Ticket</a> |
+      <a href="#bookings">My Bookings</a> |
+      <a href="#guidelines">Guidelines</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- 2. HERO / BANNER -->
+    <section class="hero">
+      <h1>Experience The Stadium Energy Live!</h1>
+      <a href="#matches"><button>View Schedule</button></a>
+      <a href="#book"><button>Book Ticket</button></a>
+    </section>
+
+    <!-- 3. ABOUT IPL 2026 -->
+    <section>
+      <h2>About IPL 2026</h2>
+
+      <h3>Popular Teams</h3>
+      <ul>
+        <li>Chennai Super Kings</li>
+        <li>Mumbai Indians</li>
+        <li>Royal Challengers Bengaluru</li>
+        <li>Kolkata Knight Riders</li>
+      </ul>
+
+      <h3>Major Match Venues</h3>
+      <ul>
+        <li>Chepauk, Chennai</li>
+        <li>Wankhede, Mumbai</li>
+        <li>Chinnaswamy, Bengaluru</li>
+        <li>Eden Gardens, Kolkata</li>
+      </ul>
+    </section>
+
+    <!-- 4. MATCH SCHEDULE (id="matches" is the target of the nav link) -->
+    <section id="matches">
+      <h2>Match Schedule</h2>
+
+      <!-- Team filter above the table -->
+      <label for="team">Filter by team:</label>
+      <select id="team">
+        <option>All Teams</option>
+        <option>CSK</option>
+        <option>MI</option>
+        <option>RCB</option>
+        <option>KKR</option>
+      </select>
+
+      <table>
+        <tr>
+          <th>Match No.</th>
+          <th>Teams</th>
+          <th>Date &amp; Time</th>
+          <th>Venue</th>
+          <th>General</th>
+          <th>Premium</th>
+          <th>VIP</th>
+          <th>Action</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>CSK vs MI</td>
+          <td>28 Mar 2026, 7:30 PM</td>
+          <td>Chennai</td>
+          <td>₹1500</td>
+          <td>₹4000</td>
+          <td>₹9000</td>
+          <td><a href="#book"><button>Book</button></a></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>RCB vs KKR</td>
+          <td>29 Mar 2026, 7:30 PM</td>
+          <td>Bengaluru</td>
+          <td>₹1800</td>
+          <td>₹4500</td>
+          <td>₹10000</td>
+          <td><a href="#book"><button>Book</button></a></td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- 5. BOOKING FORM + SUMMARY CARD (side by side) -->
+    <section id="book">
+      <h2>Book Your Ticket</h2>
+
+      <div class="booking">
+
+        <!-- The form -->
+        <form>
+          <p>
+            <label for="match">Match:</label><br>
+            <select id="match">
+              <option>CSK vs MI</option>
+              <option>RCB vs KKR</option>
+            </select>
+          </p>
+          <p>
+            <label for="stand">Stand Category:</label><br>
+            <select id="stand">
+              <option>General</option>
+              <option>Premium</option>
+              <option>VIP</option>
+            </select>
+          </p>
+          <p>
+            <label for="qty">Number of Tickets:</label><br>
+            <input type="number" id="qty" min="1" max="6" value="1">
+          </p>
+          <p>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name">
+          </p>
+          <p>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email">
+          </p>
+          <p>
+            <label for="phone">Phone Number:</label><br>
+            <input type="tel" id="phone">
+          </p>
+          <button type="submit">Confirm Booking</button>
+        </form>
+
+        <!-- Summary card (aside = side content) -->
+        <aside class="card">
+          <h3>Booking Summary</h3>
+          <p>Match: -</p>
+          <p>Stand: -</p>
+          <p>Ticket Price: ₹0</p>
+          <p>Quantity: 0</p>
+          <p><b>Total Amount: ₹0</b></p>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- 6. MY BOOKINGS (empty table for now) -->
+    <section id="bookings">
+      <h2>My Ticket Bookings</h2>
+      <table>
+        <tr>
+          <th>Booking ID</th>
+          <th>Match</th>
+          <th>Stand</th>
+          <th>Tickets</th>
+          <th>Total</th>
+        </tr>
+        <!-- Rows will be added later -->
+      </table>
+    </section>
+
+    <!-- 7. GUIDELINES (three cards) -->
+    <section id="guidelines">
+      <h2>Guidelines</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>Ticket Verification</h3>
+          <p>Show the QR code from your email at the gate.</p>
+        </article>
+        <article class="card">
+          <h3>ID Proof Requirement</h3>
+          <p>Carry a valid photo ID that matches your booking name.</p>
+        </article>
+        <article class="card">
+          <h3>Prohibited Items</h3>
+          <p>No outside food, sharp objects, or large bags.</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 8. FOOTER -->
+  <footer>
+    <p>&copy; 2026 IPL Ticket Booking. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
