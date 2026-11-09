@@ -158,16 +158,26 @@ footer {
   padding: 20px;
   margin-top: 20px;
 }
-/* ---------- Toast notification ---------- */
-.toast {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: var(--primary);
-  color: var(--white);
-  border-left: 5px solid var(--accent);
-  padding: 15px 20px;
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  z-index: 200;
+/* ---------- Radio buttons, checkboxes, reset button ---------- */
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 6px;
+}
+
+fieldset {
+  border: 1px solid #b8c4dc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+fieldset label {
+  display: block;
+  margin: 6px 0;
+}
+
+button[type="reset"] {
+  background: var(--white);
+  border: 2px solid var(--accent);
+  margin-left: 10px;
 }
