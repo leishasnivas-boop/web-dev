@@ -181,3 +181,16 @@ button[type="reset"] {
   border: 2px solid var(--accent);
   margin-left: 10px;
 }
+/* ---------- Toast notification ---------- */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--primary);
+  color: var(--white);
+  border-left: 5px solid var(--accent);
+  padding: 15px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 200;
+}
