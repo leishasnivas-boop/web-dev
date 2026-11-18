@@ -33,7 +33,9 @@ h2 {
   display: inline-block;
 }
 
-/* ---------- Navigation bar ---------- */
+.hidden { display: none; }
+
+/* ---------- Navigation bar (FLEXBOX) ---------- */
 header {
   position: fixed;
   top: 0;
@@ -41,9 +43,29 @@ header {
   width: 100%;
   z-index: 100;
   background: var(--primary);
+  box-shadow: var(--shadow);
+}
+
+/* keeps booking.html's simple nav working */
+header > nav {
   padding: 18px 0;
   text-align: center;
-  box-shadow: var(--shadow);
+}
+
+.nav-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 12px 20px;
+  display: flex;                    /* logo left, links right */
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
 }
 
 nav a {
@@ -58,7 +80,29 @@ nav a:hover {
   border-bottom: 2px solid var(--accent);
 }
 
-/* ---------- Hero section ---------- */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul a { margin: 0 8px; }
+
+/* hamburger is hidden on desktop */
+.hamburger {
+  display: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 28px;
+  padding: 0 10px;
+  box-shadow: none;
+}
+
+.hamburger:hover { background: transparent; color: var(--accent); }
+
+/* ---------- Hero ---------- */
 .hero {
   max-width: none;
   background: linear-gradient(135deg, var(--primary), #1a56db);
@@ -85,6 +129,52 @@ button {
 }
 
 button:hover { background: var(--white); }
+
+button[type="reset"] {
+  background: var(--white);
+  border: 2px solid var(--accent);
+  margin-left: 10px;
+}
+
+/* ---------- Filter bar + view toggle ---------- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.view-toggle button {
+  background: var(--white);
+  border: 2px solid var(--accent);
+}
+
+.view-toggle button.active {
+  background: var(--accent);
+}
+
+/* ---------- Match cards (GRID) ---------- */
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* 2 columns in grid view */
+  gap: 20px;
+}
+
+.match-grid.list-view {
+  grid-template-columns: 1fr;              /* 1 column in list view */
+}
+
+.match-card {
+  background: var(--white);
+  border-top: 5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 15px;
+  box-shadow: var(--shadow);
+}
+
+.match-card h3 { margin-top: 0; color: var(--primary); }
 
 /* ---------- Tables ---------- */
 table {
@@ -132,33 +222,10 @@ input, select {
   border-radius: 5px;
 }
 
+.filter-bar select { width: auto; }
+
 aside { flex: 1 1 200px; }
 
-/* ---------- Cards ---------- */
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.card {
-  flex: 1 1 200px;
-  background: var(--white);
-  border-top: 5px solid var(--accent);
-  border-radius: var(--radius);
-  padding: 15px;
-  box-shadow: var(--shadow);
-}
-
-/* ---------- Footer ---------- */
-footer {
-  background: var(--primary);
-  color: var(--white);
-  text-align: center;
-  padding: 20px;
-  margin-top: 20px;
-}
-/* ---------- Radio buttons, checkboxes, reset button ---------- */
 input[type="radio"],
 input[type="checkbox"] {
   width: auto;
@@ -176,12 +243,31 @@ fieldset label {
   margin: 6px 0;
 }
 
-button[type="reset"] {
+/* ---------- Cards + guidelines (GRID, 3 columns) ---------- */
+.card {
   background: var(--white);
-  border: 2px solid var(--accent);
-  margin-left: 10px;
+  border-top: 5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 15px;
+  box-shadow: var(--shadow);
 }
-/* ---------- Toast notification ---------- */
+
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+/* ---------- Toast ---------- */
 .toast {
   position: fixed;
   bottom: 30px;
@@ -193,4 +279,38 @@ button[type="reset"] {
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   z-index: 200;
+}
+
+/* ---------- MEDIA QUERY: tablets and phones ---------- */
+@media (max-width: 768px) {
+
+  /* show hamburger, hide menu until opened */
+  .nav-container { flex-wrap: wrap; }
+  .hamburger { display: block; }
+
+  #nav-menu {
+    display: none;
+    width: 100%;
+  }
+
+  #nav-menu.open { display: block; }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 10px 0;
+  }
+
+  nav ul li { padding: 8px 0; }
+  nav ul a { margin: 0; }
+
+  /* stack everything into one column */
+  .match-grid,
+  .guidelines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .booking { flex-direction: column; }
+
+  .hero h1 { font-size: 28px; }
 }
