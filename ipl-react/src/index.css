@@ -1,0 +1,76 @@
+:root {
+  --primary: #0b2a5b;
+  --accent: #f4b400;
+  --background: #eef3fb;
+  --white: #ffffff;
+  --shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  --radius: 8px;
+}
+
+body {
+  margin: 0;
+  padding-top: 60px;
+  font-family: Arial, sans-serif;
+  background: var(--background);
+  color: #222;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: var(--primary);
+  box-shadow: var(--shadow);
+}
+.logo { color: var(--accent); font-size: 22px; font-weight: bold; }
+.navbar a { color: var(--white); text-decoration: none; font-weight: bold; margin-left: 20px; }
+.navbar a:hover { color: var(--accent); }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--primary), #1a56db);
+  color: var(--white);
+  text-align: center;
+  padding: 90px 20px;
+}
+
+button {
+  background: var(--accent);
+  color: var(--primary);
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  border-radius: var(--radius);
+  font-weight: bold;
+  cursor: pointer;
+}
+button:hover { background: var(--white); }
+
+/* Match cards */
+.section { max-width: 1000px; margin: auto; padding: 40px 20px; }
+h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; }
+
+.match-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.match-card {
+  background: var(--white);
+  border-top: 5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 15px;
+  box-shadow: var(--shadow);
+}
+.match-card h3 { margin-top: 0; color: var(--primary); }
+
+@media (max-width: 768px) {
+  .match-grid { grid-template-columns: 1fr; }
+}
