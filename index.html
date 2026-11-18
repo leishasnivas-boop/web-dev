@@ -101,16 +101,18 @@
           <p>
             <label for="match">Match:</label><br>
             <select id="match">
-              <option>CSK vs MI</option>
-              <option>RCB vs KKR</option>
+              <option value="">-- Choose a match --</option>
+              <option value="CSK vs MI">CSK vs MI</option>
+              <option value="RCB vs KKR">RCB vs KKR</option>
             </select>
           </p>
           <p>
             <label for="stand">Stand Category:</label><br>
             <select id="stand">
-              <option>General</option>
-              <option>Premium</option>
-              <option>VIP</option>
+              <option value="">-- Choose a stand --</option>
+              <option value="General">General</option>
+              <option value="Premium">Premium</option>
+              <option value="VIP">VIP</option>
             </select>
           </p>
           <p>
@@ -132,13 +134,14 @@
           <button type="submit">Confirm Booking</button>
         </form>
 
+        <!-- Booking summary: JavaScript updates the <span> values -->
         <aside class="card">
           <h3>Booking Summary</h3>
-          <p>Match: -</p>
-          <p>Stand: -</p>
-          <p>Ticket Price: ₹0</p>
-          <p>Quantity: 0</p>
-          <p><b>Total Amount: ₹0</b></p>
+          <p>Match: <span id="sum-match">-</span></p>
+          <p>Stand: <span id="sum-stand">-</span></p>
+          <p>Ticket Price: <span id="sum-price">₹0</span></p>
+          <p>Quantity: <span id="sum-qty">1</span></p>
+          <p><b>Total Amount: <span id="sum-total">₹0</span></b></p>
         </aside>
 
       </div>
@@ -184,7 +187,6 @@
     <p>&copy; 2026 IPL Ticket Booking. All rights reserved.</p>
   </footer>
 
-  <!-- JavaScript (Activity 4) -->
   <script src="app.js"></script>
 
 </body>
