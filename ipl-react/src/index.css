@@ -1,39 +1,82 @@
+/* ---------- Theme ---------- */
 :root {
   --primary: #0b2a5b;
   --accent: #f4b400;
   --background: #eef3fb;
+  --text: #222222;
   --white: #ffffff;
   --shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   --radius: 8px;
 }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   padding-top: 60px;
   font-family: Arial, sans-serif;
   background: var(--background);
-  color: #222;
+  color: var(--text);
 }
 
-/* Navbar */
+/* ---------- Sections ---------- */
+.section {
+  max-width: 1000px;
+  margin: auto;
+  padding: 40px 20px;
+  scroll-margin-top: 60px;
+}
+
+h2 {
+  color: var(--primary);
+  border-bottom: 3px solid var(--accent);
+  display: inline-block;
+}
+
+/* ---------- Navbar (flexbox) ---------- */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   box-sizing: border-box;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
+  padding: 12px 30px;
   background: var(--primary);
   box-shadow: var(--shadow);
 }
-.logo { color: var(--accent); font-size: 22px; font-weight: bold; }
-.navbar a { color: var(--white); text-decoration: none; font-weight: bold; margin-left: 20px; }
-.navbar a:hover { color: var(--accent); }
 
-/* Hero */
+.logo {
+  color: var(--accent);
+  font-size: 22px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.navbar nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 20px;
+}
+
+.navbar nav a:hover { color: var(--accent); }
+
+.hamburger {
+  display: none;
+  background: transparent;
+  color: var(--white);
+  font-size: 28px;
+  padding: 0 10px;
+  margin: 0;
+}
+
+.hamburger:hover { background: transparent; color: var(--accent); }
+
+/* ---------- Hero ---------- */
 .hero {
   background: linear-gradient(135deg, var(--primary), #1a56db);
   color: var(--white);
@@ -41,6 +84,9 @@ body {
   padding: 90px 20px;
 }
 
+.hero h1 { font-size: 40px; margin-bottom: 25px; }
+
+/* ---------- Buttons ---------- */
 button {
   background: var(--accent);
   color: var(--primary);
@@ -50,18 +96,70 @@ button {
   border-radius: var(--radius);
   font-weight: bold;
   cursor: pointer;
+  box-shadow: var(--shadow);
 }
+
 button:hover { background: var(--white); }
 
-/* Match cards */
-.section { max-width: 1000px; margin: auto; padding: 40px 20px; }
-h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inline-block; }
+.reset-btn {
+  background: var(--white);
+  border: 2px solid var(--accent);
+}
 
+/* ---------- Inputs ---------- */
+input, select {
+  width: 100%;
+  max-width: 320px;
+  padding: 8px;
+  margin-top: 4px;
+  border: 1px solid #b8c4dc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  width: auto;
+  margin-right: 6px;
+}
+
+fieldset {
+  border: 1px solid #b8c4dc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+fieldset label { display: block; margin: 6px 0; }
+
+/* ---------- Filter bar + view toggle ---------- */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.filters { display: flex; flex-wrap: wrap; gap: 10px; }
+.filters input, .filters select { width: auto; margin-top: 0; }
+
+.view-toggle button {
+  background: var(--white);
+  border: 2px solid var(--accent);
+}
+
+.view-toggle button.active { background: var(--accent); }
+
+/* ---------- Match cards (grid) ---------- */
 .match-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 20px;
 }
+
+.match-grid.list-view { grid-template-columns: 1fr; }
+
 .match-card {
   background: var(--white);
   border-top: 5px solid var(--accent);
@@ -69,8 +167,82 @@ h2 { color: var(--primary); border-bottom: 3px solid var(--accent); display: inl
   padding: 15px;
   box-shadow: var(--shadow);
 }
+
 .match-card h3 { margin-top: 0; color: var(--primary); }
 
+/* ---------- Booking form + summary ---------- */
+.booking { display: flex; flex-wrap: wrap; gap: 20px; }
+
+form {
+  flex: 2 1 300px;
+  background: var(--white);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.card {
+  flex: 1 1 200px;
+  background: var(--white);
+  border-top: 5px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 15px;
+  box-shadow: var(--shadow);
+}
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  background: var(--white);
+  border-collapse: collapse;
+  box-shadow: var(--shadow);
+}
+
+th, td { border: 1px solid #ccd6e8; padding: 10px; text-align: center; }
+th { background: var(--primary); color: var(--white); }
+tr:nth-child(even) td { background: #f3f6fc; }
+
+/* ---------- Guidelines (3 columns) ---------- */
+.guidelines-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* ---------- Footer + toast ---------- */
+.footer {
+  background: var(--primary);
+  color: var(--white);
+  text-align: center;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--primary);
+  color: var(--white);
+  border-left: 5px solid var(--accent);
+  padding: 15px 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  z-index: 200;
+}
+
+/* ---------- Media query: tablets and phones ---------- */
 @media (max-width: 768px) {
-  .match-grid { grid-template-columns: 1fr; }
+  .navbar { flex-wrap: wrap; padding: 12px 20px; }
+  .hamburger { display: block; }
+
+  .navbar nav { display: none; width: 100%; }
+  .navbar nav.open { display: flex; flex-direction: column; padding: 10px 0; }
+  .navbar nav a { margin: 0; padding: 10px 0; }
+
+  .match-grid,
+  .guidelines-grid { grid-template-columns: 1fr; }
+
+  .booking { flex-direction: column; }
+  .hero h1 { font-size: 28px; }
 }
