@@ -16,11 +16,11 @@ function MyBookings({ bookings }) {
         ) : (
           bookings.map((b) => (
             <tr key={b.id}>
-              <td>{b.id}</td>
-              <td>{b.match}</td>
+              <td>BK{b.id}</td>
+              <td>{b.match_teams}</td>
               <td>{b.stand}</td>
-              <td>{b.qty}</td>
-              <td>₹{b.total}</td>
+              <td>{b.quantity}</td>
+              <td>₹{b.total_amount}</td>
             </tr>
           ))
         )}

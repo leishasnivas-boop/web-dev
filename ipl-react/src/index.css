@@ -246,3 +246,8 @@ tr:nth-child(even) td { background: #f3f6fc; }
   .booking { flex-direction: column; }
   .hero h1 { font-size: 28px; }
 }
+button:disabled {
+  background: #c7cdd9;
+  color: #6b7280;
+  cursor: not-allowed;
+}
